@@ -1,6 +1,6 @@
 function global:GenerateJWTToken {
 
-        Write-Host "Creating jwt for Sandbox subscription ...."
+        Write-Host "Creating jwt for token ...."
         Write-Host ""
         $displayName = "<Your App Registration Name>"
         $clientAppRegistration = Get-AzureADMSApplication -Filter "DisplayName eq '$($displayName)'"
