@@ -76,7 +76,7 @@ function global:AppRegistrationProcess
      # Connect-AzureAD automatically
     ConnectToAzureAD
     # Generate JWT token
-    $token = GenerateJWTToken -subscription $subscription
+    $token = GenerateJWTToken
     # Create application registration
     CreateAppRegistration -DisplayName $appName -token $token
 }
