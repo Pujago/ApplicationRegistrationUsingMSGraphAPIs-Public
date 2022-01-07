@@ -11,11 +11,9 @@ function global:CreateAudienceAppRoles
 {
     param (
         $appName,
-        $token,
         $appRole        
     )
     $appName = "$appName"
-    $token = "$token"
     $appRole = "$appRole"  
     try 
     {
@@ -85,7 +83,6 @@ function global:CreateAppRolePS
     }
 }
 
-& "$PSScriptRoot\GenerateToken.ps1"
 & "$PSScriptRoot\ConnectToAzureAD.ps1"
 
 function AppRolesProcess {
@@ -95,14 +92,12 @@ function AppRolesProcess {
 
     # Connect-AzureAD automatically
     ConnectToAzureAD
-    
-    # Generate token automatically
-    $token = GenerateJWTToken -subscription $subscription       
+          
     Write-Host "Creating app roles '$($approlesList)' for '$($appName)'..."
     Write-Host ""
     foreach ($item in $approles) {
         $item = $item.Trim()
-            CreateAudienceAppRoles -appName $appName -token $token -appRole $item   
+            CreateAudienceAppRoles -appName $appName -appRole $item 
     }
 }
 
